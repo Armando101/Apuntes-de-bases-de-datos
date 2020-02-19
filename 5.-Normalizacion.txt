@@ -1,0 +1,62 @@
+Dependencias Funcionales
+
+    Reflexiva => Si tengo un dato A puedo llegar a un dato B
+    Se refiere en el video en el ambito de de una sola tabla.
+
+    Aumentativa => Si tengo un dato A,C entonces B,C.
+    Lo que quiere decir es que si yo tengo de la tabla mCompra el id (A), puedo obtener la dirección (B). Pero si aparte del id (A) también tengo el código C puedo obtener la dirección (B) con el código C. (A -> B entonces AC -> BC). Esto permite acumular (aumentar) los datos en una consulta para tener mayor información al detalle.
+
+    Transitiva => Si tengo una tabla A que esta relacionada con una tabla B y tengo un tabla C relacionada con B no tengo que tener relación entre A y C para poder traer los datos de C cuando hago una consulta de A. Tablas sin relación redundante.
+
+	La primera forma normal es la base de todas, sin esta no podríamos tener la siguiente (la segunda contiene la primera), y así sucesivamente hasta la quinta forma normal.
+
+	Estas formas normales no necesariamente son las mas utilizadas, generalmente uno llega hasta la tercera forma normal (la tradicional). Las otras formas se requieren cuando se necesita un nivel de detalle mas grande o cuando una base de datos no va a crecer tanto ya que por ejemplo con una base de datos de 1200 tablas las ultimas formas normales se vuelven inmanejables.
+
+**************************************
+Primera forma normal
+	La forma de entender la primera forma normal es con el principio de atomicidad, el valor tiene que ser el mínimo posible, aquí ya no hablamos de un conjunto de pasos o transacciones, mas bien el valor como tal mínimo posible.
+
+	Por ejemplo en el atributo Nombre, el cual contiene nombres y apellidos, lo podemos segmentar en los atributos Nombre, Segundo Nombre y Apellidos. El Nombre debería ser obligatorio y Segundo Nombre opcional.
+
+	Para que se de la primera forma normal es requisito indispensable tener por lo menos una llave primaria.
+
+**************************************
+Segunda forma normal
+	Para no permitir errores llevamos los datos unicos y especificos a otras tablas como;
+	Tabla Persona que contiene una llave Foránea Fk hacia --> Ciudad que contiene una FK --> hacia País. Incluso Ciudad puede contener otra llave foránea hacia --> Estado que contiene FK --> Municipio, FK --> así sucesivamente para especificar lo mejor posible las direcciones.
+	Una relación está en 2FN si está en 1FN y si los atributos que no forman parte de ninguna clave dependen de forma completa de la clave principal.
+	Es decir que no existen dependencias parciales. (Todos los atributos que no son clave principal deben depender únicamente de la clave principal). Es decir si tengo una ciudad y un pais, estos dependen entre sí, por lo que hacemos es separarlas en dos tablas distintas y mediante una llave foranea relacionarlas entre ellas, y mediante una llave foranea conectar a la tabla principal con una de las antes mencionadas.
+
+**************************************
+Tercera forma normal
+
+	Una tabla está normalizada en esta forma si todas las columnas que no son llave son funcionalmente dependientes por completo de la llave primaria y no hay dependencias transitivas. Comentamos anteriormente que una dependencia transitiva es aquella en la cual existen columnas que no son llave que dependen de otras columnas que tampoco son llave.
+
+	Cuando las tablas están en la Tercera Forma Normal se previenen errores de lógica cuando se insertan o borran registros. Cada columna en una tabla está identificada de manera única por la llave primaria,
+	y no deben haber datos repetidos. Esto provee un esquema limpio y elegante, que es fácil de trabajar y expandir.
+
+**************************************
+Cuarta forma normal
+
+	En 4FN obligatoriamente no podemos repetir datos en una tabla, solo tenemos combinaciones únicas y todas las llaves van a poder ser si o si obligatoriamente llaves primarias.
+
+**************************************
+Quinta forma normal
+
+	En 5FN es importante tener 2 tablas que están en 4FN, cada dependencia de union (join) va a estar hecho por claves candidatas y no va puede estar hecho por condiciones que no se vayan a cumplir.
+
+**************************************
+Conceptos
+	*Redundancia **: Eliminación de Renundancia de Datos
+	Concurrencia : Posibilidad de accedes a datos de manera concurrente.
+	Aislamiento: Permite realizar operaciones independientes
+	Integridad: PK, not null, true , false o FK
+	Inconsistencia: Permite evitar la insconsistencia de datos (Bogotá con tilde en un registro, Bogota sin tilde en otro registro) refiriendose al mismo dato
+	Seguridad: Autenticación, LDAP, Kerberos
+	Acceso : Permite manejas esquemas de seguridad, ROLES ó noveles de accesos
+	Atomicidad :
+
+	DML: DATA MODEL LANGUAGE
+	DDL: DATA DEFINITION LANGUAGE
+
+	Mysql fue adquirido por Oracle. Maria db es una especie de fork de mysql pero cuenta con una buena comunidad.

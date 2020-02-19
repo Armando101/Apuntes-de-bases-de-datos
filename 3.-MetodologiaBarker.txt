@@ -1,0 +1,104 @@
+Paso 1
+Identificar Cuáles son las Entidades que resuelven Nuestro Problema
+	
+	Es necesario documentarse muy bien acerca del problema que se va a resolver.
+	Identificar las entidades que van a resolver nuestro problema, las entidades se trabajan en singulas, Por ejemplo la entidad es avion NO aviones.
+
+	Identificación de entidades en el ejemplo de aeropuertos:
+
+    Avión
+    Aerolinea
+    Ruta
+    Tripulante
+    Piloto
+    Aeropuerto
+    País
+    Ciudad
+    Pasajero
+
+*****************************
+Paso 2: Identificación de las relaciones de las entidades.
+
+	Para tomar en cuenta: Pueden existir relaciones entre entidades que se relacione entre ellas mismas.
+
+	Un ejemplo de un entidad que se relaciona a si misma es este sistema de comentarios ya que tiene comentarios padre y comentarios hijos, pero es la misma entidad comentario con un atributo padre que se relaciona a si mismo.
+
+*****************************
+Paso 3 entidades y relaciones
+	Este paso consiste en formar el diagrama de las entidades y relaciones sin atributos
+
+*****************************
+Metodología del diseño, Correcciones de los pasos 2 y 3
+	Al hacer nuestra tabla de entidades, si trazamos una diagonal principal tenemos que tener en cuenta que debe existir una relacion "espejo" o no haber relación. Por ejemplo: Si un Avion está relacionado con una ruta también la ruta debe estar relacionada con el avión, Si una aereolinea esta relacionada con un piloto, un piloto también debe de estar relacionado con una aereolinea aunque esta relación no sea la misma, pero debe existir.
+
+	También se debe tomar en cuenta el principio de transitividad. Si A->B->C Por lo tanto A->C (A se relaciona con C), entonces caeriamos en redundancia si en nuestra tabla relacionamos A->B y también A->C, Basta con solo hacer una relación a menos de que sea muy importante hacer las dos ya que si queremos ver alguna relación entre A->C ya no tendriamos que pasar por A->B
+
+*****************************
+Paso 4: Asignar Atributos a las Entidades.
+	
+	Para hacer un buen ejercicio hay que pensar en:
+
+    ¿Que atributos voy a necesitar?
+    ¿Cual va a ser la codificación que voy a utilizar?
+    ¿Como los voy a trabajar dependiendo del tipo de dato?
+
+	Hasta este punto no nos vamos a fijar en que motor de base de datos vamos a correr.
+
+	El tipo de dato va a ser obligatorio o no obligatorio, dando la posibilidad de que sea nulo o no nulo (Null o Not Null en SQL).
+
+	Vamos a tener un identificador único de cada tabla, una llave primaria. Mínimo una por tabla.
+
+	Para hacer mas fácil las consultas hay que tener una nomenclatura para cada tabla (como AV_ para avión) y así poder referirnos a los atributos que se repiten en varias tablas (como nombre).
+
+	Hay que revisar el tipo de dato que vamos a usar, los identificadores se pueden trabajar como serial, así la misma base de datos se va a encargar de que el valor de ese identificador sea único e irrepetible.
+
+	Definimos la obligatoriedad de los datos, las llaves primarias tienen que ser obligatorias.
+
+*****************************
+Paso 5. Generar un diagrama conceptual
+	 Generar un diagrama conceptual (entidades, relaciones y atributos).
+	Las relaciones siempre se van a hacer en 2 sentidos (A con B y B con A).
+
+*****************************
+Paso 6. Modelo lógico
+	Las relaciones muchos a muchos se hacen por medio de entidades débiles, entre las entidades relacionadas, esto es porque no podemos generar muchas llaves foráneas en ambas entidades (fuertes).
+
+	En estas entidades debiles se usan ambas llaves primarias de las entidades (fuertes) que tenían relación.
+
+	En las entidades debiles no debería haber tipos de datos seriales, estas tendrían que ser integer, ya que las entidades debiles no tienen forma de tener consistencia con esa serialidad.
+*****************************
+Paso 7. Identificar nuevos atributos que generan nuestras entidades débiles.
+
+	Son atributos que puedes tener que no son sencillos de manejar en la relación muchos a muchos directamente.
+
+	Son atributos especificos de la nueva entidad que se genera de la relacion muchos a muchos, por ejemplo en una biblioteca, un libro puede ser consultado por muchos usuarios y un usuario puede consultar muchos libros, entonces daria lugar a una nueva entidad (libro-usuario) que seria los prestamos, entonces la entidad tendra el id del libro el id del usuario y se necesita atributos adicionales como la fecha de prestamo y la fecha de entrega.
+
+*****************************
+Paso 8. Construir el Diagrama del Modelo Físico
+	Las lineas de las relaciones van a ser lineas rectas, la relación uno a muchos vamos a crear una linea con un sentido que termina en cabeza de flecha. Las lineas 1 a 1 o 0 a 1 se mantienen como antes.
+
+	Las llaves foráneas en entidades debiles refieren o apuntan hacia su llave primaria en entidades fuertes.
+
+	En el modelo fisico hay que poner el tipo de dato de acuerdo a la base de datos en la que vamos a trabajar.
+
+	Los motores de base de datos tienen diferentes implementaciones de los tipos de datos, hay que revisar a que se traducen dependiendo de la base de datos
+
+	Notas de la Clase
+
+Puntos importantes del modelo físico:
+
+    Entidades pasan a llamarse Tablas.
+    Dejamos de usar #, * y º para referinos a llaves primarias, campos obligatorios y opcionales.
+    Las relaciones ahora son representadas por flechas.
+    La dirección de las flechas apuntan hacía la tabla que origina una llave foránea o sea la tabla que tiene la llave primaria.
+    Se definen los tipos de datos, dependiendo del motor SQL (MySQL, SQLServer, MariaDB, PostgreSQL).
+
+*****************************
+Paso 9 Pasar al estándar de la base de datos (SQL)
+	create table, crea una tabla.
+	alter table, modifica una tabla existente.
+	
+	Generalmente cuando creamos las tablas se hacen con un orden especifico, si creamos primero Aerolinea_Pasajero, se va a referir a una tabla que no existe. Esto nos da un error de consistencia.
+	
+	Se recomienda hacer alter table, para cambiar los esquemas al final.
+	Ver archivo Paso9Tablas.sql

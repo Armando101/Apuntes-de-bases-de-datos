@@ -1,0 +1,156 @@
+¿Qué es una Entidad?
+	Una entidad es la representación de un objeto o concepto del mundo real. En las bases de datos se emplea un modelo de datos para describir la estructura de la base de datos.
+
+	Barker = Aquí una entidad se representa como una caja, es una caja que va a tener atributos. Estos atributos van a poder ser obligatorios u opcionales.
+
+	**Recomendación:**
+	El formato para trabajar con los ID debe ser “number”. No siempre va a poder ser así, pero es lo más recomendable.
+
+	Ejemplo de entidad: Casa
+
+	Atributos:
+
+	    Numero de Ventanas, number
+	    Numero de Puertas, number
+	    Color, character(30)
+	    ID, number
+	    Ubicación, text
+
+******************************
+¿Qué es una Relación?
+	Para definir una Relación tenemos que tener en cuenta los siguientes puntos:
+
+    La obligatoriedad. Ésta se denota con una línea continua.
+    Opcional. Se representa con una línea punteada.
+
+	Datos importantes:
+
+	El símbolo con el que representamos la característica “de uno a muchos” es con la llamada pata de gallo, que gráficamente es una línea continua con dos líneas en 45 grados en cada lado.
+
+Relaciones :
+	0-1 -------- (una persona puede tener 0 o 1 licencia de conducción)
+	1-1 _____(una nación tiene una capital y una capital pertenece a una nación)
+	0-M -------< (una persona puede tener 0 o muchos televisores)
+	1-M _____< (un ciente hace uno o muchos pedidos y muchos pedidos son hechos por un cliente)
+	M-M >____< (una estudiante puede matricularse muchas clases y una clase puede incluir muchos estudiantes)
+
+******************************
+Característicad o datos de una entidad
+	
+	Los indices deben ser valores únicos y numéricos.
+
+	Se recomienda que sean de tipo **numérico **porque estos tipos de datos son mas rápidos de encontrar por medio de una búsqueda, ya que solo hay 10 posibilidades (0 a 9) de comparación a diferencia de un tipo de dato caracter donde hay que hacer al rededor de 70 comparaciones.
+
+	Entidad Fuerte: La constituyen las tablas principales de la BD, que contienen los registros principales del sistema de información y que requieren de entidades o tablas auxiliares para completar su descripción o información.
+
+	Entidad Debil: Tablas auxiliares de una tabla principal a la que completan o complementan con la información de sus registros relacionados.
+
+******************************
+Llaves
+	* Obligatorio
+	o Opcional
+	# Llave de identificación
+
+Las llaves nos dan acceso a los datos de una entidad, su notación es
+la de numeral #.
+
+Las llaves tienen que ser irrepetibles y obligatorias, por lo tanto el ID puede ser una llave.
+
+Una llave puede ser compuesta, esta se compone de 2 numeros, entre ID y Numero de seguro social. (Como un numero de teléfono móvil).
+
+Las llaves foráneas son llaves que van a estar en nuestra tabla, no son nuestras llaves primarias pero van a permitir acceder a otra tabla donde ahí sean llaves primarias.
+
+Una llave foranea tiene que ser llave primaria de una tabla (entidad).
+
+Las llaves son fundamentales por que son obligatoriamente índices, los cuales permiten encontrar los datos cuando se necesitan de una forma rápida y ordenada.
+
+******************************
+Indices e indexación
+	
+    Las llaves primarias obligatoriamente van a ser índices.
+    Las Bases de Datos indexan con un algoritmo llamado:Árboles B+
+    Los Árboles B+ son una estructura que va a tener un tronco, tres raíces, de las cuales se van a ir derivando tres raíces más por cada una, hasta donde sea necesario.
+    Por defecto todas las Bases de Datos están indexadas, así no le pongamos índices. Lo que sucede es que la Base de Datos siempre obliga a indexar porque siempre tienen un atributo que está oculto, este atributo es RowID.
+
+    Representa una dirección de la base de datos, ocupada por una única fila. El ROWID de una fila es un identificador único para una fila dentro de una base de datos. No hay dos filas con el mismo ROWID. Este tipo de dato sirve para guardar punteros a filas concretas. El ROWID se compone de:
+	
+	-Número de datafile donde se almacena la fila
+	-Dirección del bloque donde está la fila
+	-Posición dentro del bloque
+	Siempre que queramos obtener una fila de la forma más rápida posible, debemos hacerlo a través de su ROWID. Un uso típico suele ser obtener un listado de ROWIDs con un SELECT, y después acceder a cada una de las filas directamente con la condición del ROWID.
+
+******************************
+Constraints o Restricciones
+	
+    Las restricciones se pueden trabajar desde la Base de Datos. Normalmente las validaciones con restricciones se hacen desde la aplicación, pero es importante tener en cuenta que podemos hacerlo de igual forma desde la Base de Datos.
+    Las llaves primarias y las llaves foraneas no solamente tienen la restricción Not null, sino que además tienen la restricción unique, no puede haber otra igual.
+    Con check, las validaciones que podemos hacer son: Igual, mayor o igual, menor o igual, mayor qué o menor qué.
+
+    Ejemplos de restricciones:
+
+    Validación si una persona tiene cierta edad (> 18 años)
+    El campo no puede estar vacío Not Null
+    El campo no se puede repetir Unique
+    Validación por comparación Check (==, >=, <=, ><)
+
+******************************
+Capas de abstracción del modelo Entidad-Relación
+	
+    Capa Conceptual: En esta capa vamos a tener varias entidades, aún sin nombre definido. Las entidades van a tener cada una sus llaves primarias y sus atributos, además van a tener relaciones.
+    Para que existan las relaciones “muchos a muchos” se necesitan llaves foráneas en las entidades.
+    
+    Capa Lógica: El modelo Entidad-Relación para poder procesar las relaciones “muchos a muchos” las va a partir en entidades que se llaman: Entidades Débiles. Estas entidades débiles contienen las llaves primarias de las entidades que se están relacionando y también pueden tener otros atributos tanto opcionales como obligatorios.
+    
+    Capa Física: Este modelo va a ser el paso del modelo lógico hacia la representación que ya va a tener la Base de Datos. En esta capa, ya cada uno de los datos empieza a entrar en las clasificaciones según su tipo de dato.
+
+************************
+ACID
+
+Atomicidad y consistencia
+	
+    Atomicidad: Asegura que yo tenga un conjunto de pasos para llegar a ser una transacción exitosa.
+    
+    Consistencia: Aseguro que tengo un estado válido y pasó a otro estado que sigue siendo válido.
+
+
+    Atomicidad: Si cuando una operación consiste en una serie de pasos, bien todos ellos se ejecutan o bien ninguno, es decir, las transacciones son completas.
+
+    Consistencia: (Integridad). Es la propiedad que asegura que sólo se empieza aquello que se puede acabar. Por lo tanto se ejecutan aquellas operaciones que no van a romper las reglas y directrices de Integridad de la base de datos. La propiedad de consistencia sostiene que cualquier transacción llevará a la base de datos desde un estado válido a otro también válido. “La Integridad de la Base de Datos nos permite asegurar que los datos son exactos y consistentes, es decir que estén siempre intactos, sean siempre los esperados y que de ninguna manera cambian ni se deformen. De esta manera podemos garantizar que la información que se presenta al usuario será siempre la misma.”
+
+    Commit: Ordenes en las cuales yo le digo a mi base de datos, la información que acabo de transar (transacción que acabo de hacer) es válida, almacenala y persistela en el tiempo.
+
+    Isolación/Aislamiento: Bloqueo de las transacciones hasta segurar su veracidad (consistencia).
+	
+	Durabilidad: Una vez asegurada la transacción esta es guardada hasta que el usuario quiera.
+	
+	Commit: Orden a la BD
+
+	Aislamiento: Esta propiedad asegura que una operación no puede afectar a otras. Esto asegura que la realización de dos transacciones sobre la misma información sean independientes y no generen ningún tipo de error. Esta propiedad define cómo y cuándo los cambios producidos por una operación se hacen visibles para las demás operaciones concurrentes. El aislamiento puede alcanzarse en distintos niveles, siendo el parámetro esencial a la hora de seleccionar SGBDs.
+
+	Durabilidad: (Persistencia). Esta propiedad asegura que una vez realizada la operación, ésta persistirá y no se podrá deshacer aunque falle el sistema y que de esta forma los datos sobrevivan de alguna manera.
+
+************************
+Bases de datos en memoria
+	Las bases de datos tradicionales (basada en arboles) hacen una búsqueda (Horizontal) por cada uno de los datos de la tabla hasta llegar al resultado.
+
+	En las bases de datos In-Memory (columnares), el esquema de búsquedas seleccionan una columna (por ejemplo Identificador) recorriendola hasta llegar al resultado, dando un mejor rendimiento.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

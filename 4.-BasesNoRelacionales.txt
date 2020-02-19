@@ -1,0 +1,30 @@
+***********************************
+ACID 
+	Este concepto es uno de los pilares de las bases de datos relacionales.con el cual se asegura la integridad y consistencia de los datos a pesar de la concurrencia proporcionando un entorno seguro para las operaciones que realizan.
+
+	Atomicidad: Es una de las principales características de las bases de datos Relacionales, que no siempre se cumplen en las Bases de Datos NoSQL. Es asegurarte que las transacciones sean indivisibles y no se puedan dividir en más pasos o la transacción se realiza completa o no se realiza, asegura que yo tenga un conjunto de pasos para llegar a ser una transacción exitosa.
+	
+	Consistencia: no siempre una base de datos noSQL es consistente en sus datos, esto se debe a su descentralizacion. Es decir que sus datos pueden estar replicados. Asegura el estado de valides de los datos hasta el momento.
+	
+	Aislamiento: los sistemas de datos NoSQL no siempre utilizan aislamiento debido a que manejan de manera distinta la concurrencia, mientra que bases de datos relacionales bloquean los accesos a los datos para garantizar la consistencia de los mismos. En la bases de datos NoSQL los procesos se replican, es decir se realizan copias de los mismo para cada usuario que lo solicite.
+	
+	Durabilidad: es otro principio que no aplica necesariamente en los sistemas NoSQL, esto se debe a que en algunas instancias los datos no son consistentes por lo tanto no se puede garantizar la persistencia en el tiempo de los mismos. Una manera de solucionarlo esto es replicar los datos para garantizar la consistencia y durabilidad de los datos
+
+***********************************
+CAP
+	Consistency = Consistencia: Debe retornar un dato válido, me debe permitir a cualquier estructura de su base de datos
+	
+	Availability = Disponibilidad: Cuando haga una solicitud no me va a importar que nodo del sistema esta up time o down time o sin funcionamiento. Un dato debe estar replicado en al menos tres nodos.
+	
+	Partition = Particionamiento: Es como yo parto esa información por lo menos en tres nodos para evitar que se pierdan mensajes.
+
+***********************************
+Scale out o Scale up
+    Scale Up: Realiza un crecimiento vertical. Al momento de realizar una búsqueda tendrá que realizarlo desde el primer índice hasta el último índice. Es utilizado en BD SQL.
+    
+    Scale Out: Realiza un crecimiento horizontal. Maneja su indexación a través de nodos, dividiendo así cada nodo con características especiales. Al momento de realizar una búsqueda se ubica en el nodo que cumpla con la característica general y luego va al dato particular. Utiliza el principio de “Divide y Vencerás”. Es utilizado en BD NoSQL.
+
+    Scale Up (Escalamiento Vertical): Son sistemas que crecen en Hardware, crecer en el mismo sistema, con la misma maquina, con los mismos cores con la misma memoria.
+
+	Scale Out (Escalamiento Horizontal): En este sistema no importa las características de cada una de las maquinas, podemos usar hardware como servicio a precios mas económicos para poder hacer el mismo trabajo, aqui aumentamos el numero de maquinas con performance pequeño a diferencia de Scale Up.
+

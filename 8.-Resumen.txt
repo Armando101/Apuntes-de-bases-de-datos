@@ -1,0 +1,180 @@
+
+1.-Las Bases de Datos surgen de la idea   de tener un espacio dónde poder almacenar de una forma mucho más eficiente toda la información de nuestros proyectos.
+
+2.-DBMS = Data Base Management System o SGBD = Sistemas de Gestión de Bases de Datos.
+
+3.-El estandar SQL se creo entre 1970 - 1980.
+   
+4.-Las Bases de Datos se pueden dividir en: Bases de Datos Relacionales y No Relacionales.
+    
+5.-Las bases de datos pueden ser aplicadas en todas las industrias.
+
+6.-Algunas Bases de Datos Relacionales comunes:
+    -MariaDB: Es una distribución de Bases de Datos que deriva de MySQL.
+    -PostrgreSQL: Esta es una Base de Datos comunitaria pero tiene una versión entreprise que tiene soporte.
+
+7.-Algunas Bases de Datos No Relacionales comunes:
+    -Redis: Una Base de Datos que en la actualidad se trabaja mucho.
+    -neo4j: Es una Base de Datos basada en nodos. Está centrada en grafos que nos va a permitir encontrar relaciones entre objetos. Muy común en eCommerce.
+    -Cassandra: Es una Base de Datos muy importante del proyecto Apache. Trabaja con grandes volúmenes de datos.
+    -MongoDB: Es una Base de Datos en NoSQL que se basa en trabajar en varias instancias.
+
+8.-Un dato es algo que nos va a permitir describir un objeto.
+
+9.-Existen 3 niveles de Abstracción en las Bases de Datos:
+    -Conceptual: Se tiene que empezar a modelar una Base de Datos dependiendo de lo que se quiere hacer basado en los conceptos de “entidad” y “relación”.
+    -Lógico: El diagrama lógico nos va a resolver ciertas dudas de consistencia, para evitar crear loops o evitar que tenga cosas que no tengan sentido en nuestro proyecto.
+    -Físico: Es finalmente cómo lo va a ver la Base de Datos.
+    
+10.-SQL es un lenguaje que nos sirve para hacer consultas y manipular los datos de una base de datos.
+
+11.-Tipos de variables en las Bases de Datos:
+    -Caracteres: Pueden ser desde letras hasta caracteres especiales.
+    -Numérico: Del 0 al 9 pero con una longitud especial.
+    -Varchar: Caracteres con un formato más variable.
+    -Imagen
+    -Fecha: Generalmente van acompañadas de una hora.
+    -Moneda: esto facilita todo si se trabaja con diferentes denominaciones.
+    -Texto: Variables que tienen mayor tamaño que un char o que un varchar.
+    -Bit: Se puede trabajar con 1 y 0 o también con verdadero y falso.
+    -Decimal.
+    
+12.-Esquema = Es la estructura lógica que va a tener una Base de Datos.
+ 
+13.-Instancia = Contenido de partículas que tiene una Base de Datos en un instante de tiempo.
+
+14.-Existen 3 cosas para poder hacer la descripción de una Base de Datos:
+    -DML = Data Manipulation Language o Lenguaje de Manipulación de Datos.
+    -DDL = Data Definition Language o Lenguaje de Definición de Datos.
+    -SQL = Structured Query Language o Lenguaje de Consulta Estructurada.
+
+15.-Características de Bases de Datos SQL:
+    -Es un lenguaje estructurado.
+    -Tiene un esquema de tablas.
+    -Tiene integración con otros tipos de archivos.
+    -Tiene indexación por medio de árboles.
+    
+16.-Características de Bases de Datos NoSQL:
+    -Se puede trabajar con un lenguaje estructurado o con uno no estructurado.
+    -Tiene diferente tipo de indexación. Se utiliza normalmente JSON.
+    -Tiene un crecimiento horizontal.
+    
+17.-Características de Bases de Datos Analíticas y de Bigdata:
+    Son de lenguaje no estructurado.
+    Tiene integración de muchos sistemas.
+    Tiene integración también a sistemas tradicionales y sistemas de engagement.
+    Principio “divide y vencerás”
+    Se basa en esquemas Scale Out.
+    Crecimiento horizontal.
+    
+18.-Características de Bases de Datos basadas en aceleración:
+    Normalmente basadas in Memory.
+    Uso de aceleradores como GPU, flash cards, FPGAs.
+    Tienen estructuras diferentes, por ejemplo, basadas en nodos.
+    Uso frecuente de ambientes empresariales productivos y de datawarehouse.
+    
+19.-Para definir una Relación tenemos que tener en cuenta los siguientes puntos:
+    -La obligatoriedad. Ésta se denota con una línea continua.
+    -Opcional. Se representa con una línea punteada.
+    
+20.-Notacion de las relaciones en la notacion barker:
+    -0-1 (linea punteada) ----
+    -1-1 (linea continua)
+    -0-M (linea punteada y pata de gallo) —<
+    -1-M (linea continua y pata de gallo)
+    -M-M (linea continua y pata de gallo en ambos lados)
+    
+21.-Las llaves compuestas son la union de dos o mas columnas para su llave primaria.
+
+22.-Las llaves primarias obligatoriamente van a ser índices.
+
+23.-Las Bases de Datos indexan con un algoritmo llamado:Árboles B+.
+
+24.-Los Árboles B+ son una estructura que va a tener un tronco, tres raíces, de las cuales se van a ir derivando tres raíces más por cada una, hasta donde sea necesario.
+
+25.-Por defecto todas las Bases de Datos están indexadas, así no le pongamos índices. Lo que sucede es que la Base de Datos siempre obliga a indexar porque siempre tienen un atributo que está oculto, este atributo es RowID.
+
+26.-Las restricciones se pueden trabajar desde la Base de Datos. Normalmente las validaciones con restricciones se hacen desde la aplicación, pero es importante tener en cuenta que podemos hacerlo de igual forma desde la Base de Datos.
+    
+27.-Las llaves primarias y las llaves foraneas no solamente tienen la restricción Not null, sino que además tienen la restricción unique, no puede haber otra igual.
+    
+28.-Con check, las validaciones que podemos hacer son: Igual, mayor o igual, menor o igual, mayor qué o menor qué.
+    
+29.-Capa Conceptual: En esta capa vamos a tener varias entidades, aún sin nombre definido. Las entidades van a tener cada una sus llaves primarias y sus atributos, además van a tener relaciones.
+
+30.-Para que existan las relaciones “muchos a muchos” se necesitan llaves foráneas en las entidades.
+    
+31.-Capa Lógica: El modelo Entidad-Relación para poder procesar las relaciones “muchos a muchos” las va a partir en entidades que se llaman: Entidades Débiles.
+    
+32.-Capa Física: Este modelo va a ser el paso del modelo lógico hacia la representación que ya va a tener la Base de Datos. En esta capa, ya cada uno de los datos empieza a entrar en las clasificaciones según su tipo de dato.
+    
+33.-Metodología básica de 9 pasos con Barker:
+    -Paso 1: Vamos a identificar cuáles son las entidades que van a resolver nuestros problema.
+    -Paso 2: Identificación de las relaciones de las entidades.
+    -Paso 3: Entidades y Relaciones.
+    -Paso 4: Asignar Atributos a las Entidades.
+    -Paso 5: Generar un diagrama conceptual con las entidades, relaciones y atributos.
+    -Paso 6: Modelo lógico.
+    -Paso 7: Identificar nuevos atributos que generan nuestras entidades débiles.
+    -Paso 8: Construir el Diagrama del Modelo Físico.
+    -Paso 9: Pasar al estándar de la base de datos (SQL).
+
+34.-Atomicidad: Asegura que yo tenga un conjunto de pasos para llegar a ser una transacción exitosa.
+
+35.-Consistencia: Aseguro que tengo un estado válido y pasó a otro estado que sigue siendo válido.
+
+36.-Isolacion o Aislamiento: Es una propiedad que define cómo y cuándo los cambios producidos por una operación se hacen visibles para las demás operaciones concurrentes.
+  
+37.-Durabilidad o Persistencia: Asegura que una vez realizada la operación los datos puedan persistir en el tiempo hata que yo lo decida.
+
+38.-Bases de datos Tradicionales (basada en arboles): hacen una búsqueda por cada uno de los datos de la tabla hasta llegar al resultado.
+    
+39.-Bases de datos In-Memory (columnares): el esquema de búsquedas seleccionan una columna (por ejemplo Identificador) recorriendola hasta llegar al resultado, dando un mejor rendimiento.
+
+40.-Bases de datos orientada a grafos: representa la información como nodos de un grafo y sus relaciones con las aristas del mismo.
+
+41.-Dependencias Funcionales:
+    -Reflexiva => Si tengo un dato A puedo llegar a un dato B.
+    -Aumentativa => Si tengo un dato A,C entonces B,C.
+    -Transitiva => Si tengo una tabla A que esta relacionada con una tabla B y tengo un tabla C relacionada con B no tengo que tener relación entre A y C para poder traer los datos de C cuando hago una consulta de A.
+
+42.-Formas normales de las bases de datos:
+    -1a Forma Normal: Principio de Atomicidad, dejar el mínimo valor posible de un dato (Tener llaves primarias).
+    -2a Forma Normal: Dependencias Funcionales (Llaves foráneas) No tener datos que no son llaves que dependan entre si.
+    -3a Forma Normal: Cada uno de los atributos que no sean clave en la tabla, pueden llegar a ser candidatos a campo clave (evitar repetir datos en la misma tabla).
+    -4a Forma Normal: Obligatoriamente no podemos repetir datos en una tabla, solo tenemos combinaciones únicas y todas las llaves van a poder ser si o si obligatoriamente llaves primarias.
+    -5a Forma Normal: Es importante tener 2 tablas que están en 4FN, cada dependencia de union (join) va a estar hecho por claves candidatas y no va puede estar hecho por condiciones que no se vayan a cumplir.
+
+43.-DML: Data Manipulation Languaje.
+
+44.-DDL: Data Definition Language.
+
+45.-Consistency = Consistencia: Debe retornar un dato válido, me debe permitir a cualquier estructura de su base de datos.
+
+46.-Availability = Disponibilidad: Cuando haga una solicitud no me va a importar que nodo del sistema esta up time o down time o sin funcionamiento. Un dato debe estar replicado en al menos tres nodos.
+
+47.-Partition = Particionamiento: Es como yo parto esa información por lo menos en tres nodos para evitar que se pierdan mensajes.
+
+48.-Scale Up = Crecer con el mismo hardware, (memoria, procesador, etc)
+
+49.-Scale Out = Escalamiento horizontal, mas maquinas con menores especificaciones.
+
+50.-count([columna]) Contar los atributos.
+
+51.-group by [atributo] Agrupar por columna.
+
+52.-order by [columna] asc Ordenar de forma ascendente.
+
+53.-Tupla: Es un registro (también llamado fila o tupla) representa un objeto único de datos implícitamente estructurados en una tabla.
+
+54.-Sharding: Son Paquetes o módulos que tienen pequeños partes de la bd o replicas, que permiten añidr mas shard a fin de poder escalar.
+
+55.-Los shards se manejan con llaves hash y llaves compartidas de un nodo maestro. (se estila muchos nodos).
+
+56.-RAID 1 : Espejo de datos Nodo A es igual que en un Nodo B, se necesita mucha velocidad.
+
+57.-REPLICA : Mediante Replica, asegura alta disponibilidad.
+
+58.-LOG: para averiguar como estaba la data en un determinado tiempo.
+
+59.-Snapshots (snaps) : Imagenes de un servidor, cluster, nodo, en un determinado momento. (para luego restaurar o replicar la información en otro ambiente).

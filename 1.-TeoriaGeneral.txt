@@ -1,0 +1,215 @@
+Historia de las Bases de Datos
+
+	1950-1960: Maquinas tabuladoras, tarjetas perforadas y cintas magnéticas.
+
+	1960-1979: Modelos jerárquicos, discos duros, modelo de data relacional, transacciones en tiempo real.
+
+	Un disco duro tiene información persistente, o sea que perdura en el tiempo.
+
+	1970-1980: SQL, Sistemas SQL comerciales, bases de datos paralelas y distribuidas, bases de datos orientadas a objetos.
+
+	SQL es un estándar, la mayoría de los comandos básicos, en cualquier tipo de datos que sea SQL deben funcionar (MariaDB, MySQL, etc).
+
+	1980-1990: Data mining, data warehouse, e-commerce.
+
+	2000-Actualidad: XML, administración automatizada, analytics, big data, No SQL, InMemory, Scale Out, Systems of Engagement.
+
+***********************
+Tipos de bases de datos
+	Las Bases de Datos se pueden dividir en:
+
+    Bases de Datos Relacionales: 
+    	Este tipo de base de datos se diferencia porque trabaja con un conjunto de tablas y se manipula de acuerdo con el modelo de datos relacional.
+    
+    Bases de Datos no Relacionales:
+    	En este tipo de base de datos aunque todas se denominan NoSQL, en realidad hay diferentes tipos:
+
+    	– Bases de datos “Clave” – “Valor”: Es el modelo de NoSQL más popular y sencilla en cuanto a funcionalidad.
+
+		– Bases de datos “Documentales”: Este tipo es el más versátil ya que guarda información como un documento generalmente de tipo JSON o XML.
+
+		– Bases de datos “En grafo”: La información representada en este tipo de bases de datos se realiza en forma de nodos de un grafo y sus relaciones con las aristas del mismo.
+
+		– Bases de datos “Orientadas a Objetos”: En este tipo de bases de datos la información se representa mediante objetos de igual forma que lo hacen los lenguajes de programación orientados a objetos.
+
+Bases de Datos Relacionales empresariales (más importantes)
+
+    DB2
+    SQL Server
+    Oracle
+
+Algunas Bases de Datos Relacionales comunes:
+
+    MariaDB: Es una distribución de Bases de Datos que deriva de MySQL.
+    PostrgreSQL: Esta es una Base de Datos comunitaria pero tiene una versión entreprise que tiene soporte.
+
+Algunas Bases de Datos No Relacionales comunes:
+
+    Redis: Una Base de Datos que en la actualidad se trabaja mucho.
+    neo4j: Es una Base de Datos basada en nodos. Está centrada en grafos que nos va a permitir encontrar relaciones entre objetos. Muy común en eCommerce.
+    Cassandra: Es una Base de Datos muy importante del proyecto Apache. Trabaja con grandes volúmenes de datos.
+    MongoDB: Es una Base de Datos en NoSQL que se basa en trabajar en varias instancias.
+
+***********************
+Aplicaciones de Bases de Datos:
+
+    Hacer reservaciones, las cuales no redundan (repetir) en data (Aerolineas).
+    Tomar desiciones basados en un comportamiento histórico (Escuelas).
+    Realizar transacciones internas y externas (Bancos).
+    Registros distribuidos, usando bases de datos como fundamento (blockchain).
+    Registro de inventarios, compra, venta y relación con sus usuarios y clientes (Tiendas de Retail)
+    Inventario y Registro de producción (Manufactura)
+    Historial de empleados (Recursos Humanos)
+
+Una base de datos no necesariamente puede ser un sistema unificado, también puede ser un sistema que se encuentre dentro de una sola infraestructura (o arquitectura) con instancias separadas.
+
+***********************
+Vision general de los datos
+	¿Qué es un dato?
+	Un dato es algo que nos va a permitir describir un objeto. Ese objeto global lo vamos a poder llamar “Entidad”. Una entidad puede estar llena de datos.
+	
+	Entidad: Abstracción de un objeto que tiene características.
+	
+	Relación: Como se comportan los objetos con respecto a otros objetos.
+
+Niveles de abstracción
+	Diseño conceptual: en esta parte describimos de forma independiente al sistema gestor de bases de datos, toda la estructura que tendrá nuestro sistema. Esta parte es fundamental y es clave para el diseño de una base de datos exitosa. El modelo entidad-relación forma parte del diseño conceptual.
+
+	Diseño lógico: Esta fase toma como base lo desarrollado durante la fase conceptual y nos permite desarrollar más a profundidad los datos, producto de las diferentes relaciones entre las entidades. Aquí vamos a tener una vista previa de cómo el motor de bases de datos va a ver nuestro esquema o mapa de implementación.
+
+	Diseño físico: Aquí procedemos a implementar nuestra base de datos de la forma más eficiente posible al sistema de gestión de bases de datos de nuestra elección. Es aquí donde llevamos nuestra estructura general a la forma requerida por el sistema de gestión de bases de datos que elegimos para nuestro proyecto.
+
+***********************
+Tipos de datos
+	gual que en cualquier lenguaje de programación, existen variables en las Bases de Datos:
+
+    Caracteres: Pueden ser desde letras hasta caracteres especiales.
+    Numérico: Del 0 al 9 pero con una longitud especial.
+    Varchar: Caracteres con un formato más variable.
+    Imagen
+    Fecha: Generalmente van acompañadas de una hora.
+    Moneda: esto facilita todo si se trabaja con diferentes denominaciones.
+    Texto: Variables que tienen mayor tamaño que un char o que un varchar.
+    Bit: Se puede trabajar con 1 y 0 o también con verdadero y falso.
+    Decimal
+
+	Esquema = Es la estructura lógica que va a tener una Base de Datos.
+
+	Instancia = Contenido de partículas que tiene una Base de Datos en un instante de tiempo.
+
+¿Qué debemos esperar para modelar una Base de Datos?
+
+    Los datos.
+    La relación que existe entre los datos.
+    Restricciones de los datos: Por ejemplo que el precio de un producto no sea menor o igual a cero.
+
+Forma de hacer una descripcción de una base de datos.
+	
+DML (Data Manipulation Language o Lenguaje de Manipulación de Datos.)
+
+	Las sentencias DML afectan los registros en una tabla. Estas son operaciones básicas que realizamos sobre datos tales como seleccionar algunos registros de una tabla, insertar nuevos registros, eliminar registros innecesarios y actualizar / modificar registros existentes.
+
+	Serían estas opciones que tiene DML.
+
+	SELECT: Sería para poder seleccionar registros de tablas.
+	
+	INSERT: Nos sirve para insertar nuevos registros.
+	
+	UPDATE: Para poder actualizar y modificar registros.
+	
+	DELETE: Esto es necesario para eliminar registros existentes.
+
+DDL (Data Definition Language o Lenguaje de Definición de Datos.)
+
+	Sentencias DDL son las necesarias para poder modificar base de datos, esquema y estructura de tabla. Son las útiles para el diseño y control objetos que se encuentran dentro de las bases de datos.
+
+	CREATE: Crear una nueva base de datos, una tabla o esquema.
+	
+	ALTER: Alterar tabla existente, descripción de columnas, etc.
+	
+	DROP: Eliminar objetos existentes de la base de datos
+
+DCL (lenguaje de control de datos)
+
+	Declaraciones DCL son las encargadas de controlar el acceso de los usuarios a las bases de datos.
+
+	GRANT: Es la declaración que permite a los usuarios leer / escribir en objetos que digamos de la base de datos.
+
+	REVOKE: Es la que ofrece a los usuarios estar sin permiso de lectura / escritura en objetos de la base de datos.
+
+TCL (lenguaje de control de transacciones)
+
+	Estas son las instrucciones que nos dejan poder administrar transacciones y tener integridad de datos dentro de las declaraciones SQL. Se gestiona a través de las siguientes declaraciones.
+
+	BEGIN Transaction: La que nos deja abrir una transacción.
+
+	COMMIT Transaction: Ofrece confirmar una transacción.
+
+	ROLLBACK Transaction: Devolver una transacción en caso de error cometido.
+
+SQL (Structured Query Language o Lenguaje de Consulta Estructurada.)
+
+***********************
+Diferentes tipos de bases de datos
+
+	Bases de datos SQL
+
+
+    Es un lenguaje estructurado.
+    Tiene un esquema de tablas.
+    Tiene integración con otros tipos de archivos.
+    Tiene indexación por medio de árboles.
+
+
+    La indexación funciona como un indice de un libro o de un temario, nos dice donde encontramos un tema y en que pagina.
+    La indexación en SQL se hace por medio de una estructura de arbol, esta nos permite hacer busquedas.
+    Existe el problema que cuando se buscan tipos de datos que no estan necesariamente estructurados en una estructura de datos se busca desde el primer dato hasta el ultimo.
+    Ejemplos; PostgreSQL, MariaDB.
+
+Bases de Datos No SQL
+
+	
+    Se puede trabajar con un lenguaje estructurado o con uno no estructurado.
+    Tiene diferente tipo de indexación. Se utiliza normalmente Json.
+    Tiene un crecimiento horizontal.
+
+    La indexación funciona con objetos JSON, no necesariamente funciona como un arbol, se pueden hacer indices dividiendo los objetos por sus caracteristica y particularidades.
+    Ejemplos; MongoDB, Cassandra.
+
+Bases de datos Analíticas y de Bigdata
+	
+    Son de lenguaje no estructurado.
+    Tiene integración de muchos sistemas.
+    Tiene integración también a sistemas tradicionales y sistemas de engagement.
+    Principio “divide y vencerás”
+    Se basa en esquemas Scale Out.
+    Crecimiento horizontal.
+
+    Ejemplos; Hadoop, Hortonworks, Spark
+
+Bases de datos basadas en aceleración
+	
+    Normalmente basadas in Memory.
+    Uso de aceleradores como GPU, flash cards, FPGAs.
+    Tienen estructuras diferentes, por ejemplo, basadas en nodos.
+    Uso frecuente de ambientes empresariales productivos y de datawarehouse.
+
+
+    Son bases de datos muy rápidas que sin embargo no tienen persistencia.
+    Ejemplos; Redis, neo4j, Kinetica.
+
+Formas de usos en las bases de datos:
+
+    On premise open source, bases de datos de formato empresarial u opensource instalada en nuestra maquina sin una gran infraestructura.
+    
+    Licenciamiento por cores o sockets, se paga dependiendo de ciertas características; como el hardware en el que va a correr.
+    
+    Licenciamiento modular, se paga por funcionalidades o modulos para necesidades diferentes.
+    
+    Pago por uso a través de SAAS(Software As A Service) o PAAS (Platform As A Service). Es como adquirir una renta y pagar por usar una base de datos.
+    
+    Suscripción de nodos de computo, funciona para plataformas como Hadoop el cual no es centralizado y trabaja de forma distribuida, se paga por nodo utilizado.
+
+
+
+

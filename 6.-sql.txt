@@ -1,0 +1,158 @@
+DDL: Data Definition Language
+    create table Permite crear una tabla.
+    create view Permite crear una vista.
+    create procedure Permite crear un proceso.
+    create index Permite crear un índice.
+    create schema Permite crear un esquema.
+    Nota:Alter aplica para “table, view y procedure”. Alter = Alterar.
+
+DML: Data Manipulation Language
+    select Permite seleccionar uno o muchos atributos de una o muchas tablas.
+    join Permite combinar registros de dos o más tablas.
+    insert Permite insertar en una table una nueva tupla.
+    update Permite actualizar uno o muchos atributos.
+    delete Permite eliminar uno o muchos atributos.
+    replace Permite reemplazar un atributo.
+
+***********************************
+Conceptos:
+    replace: Cambia solo un registro en mi base de datos.
+    update: Puede cambiar multiples registros en mi base de datos.
+
+    View: Porción de la data de una tabla (Los primeros 500 registros y 3 atributos).
+
+    Procedure: Procedimiento a ejecutarse en una base de datos, es decir acciones que se disparan dada una condición especifica (triggers).
+
+    En un procedimiento almacenado se pueden crear triggers son acciones que se disparan en un momento específico. Ejem: Cuando llegue una fecha específica, realizar una acción.
+
+    Eschema: Conjunto de tablas que tienen algo en común.
+
+    Un database (base de datos) es el contenedor principal, este contiene los datos, archivos log y todos los esquemas dentro de él. Los schemas (esquemas) son como carpetas dentro de una base de datos y se usan principalmente para agrupar objetos lógicos lo cuál facilita la configuración de permisos, diseño de tablas, tipo de datos, relaciones, etc.
+
+***********************************
+Querys
+    SELECT Seleccione.
+    count([columna]) Contar los atributos.
+    FROM [esquema].[tabla] De la tabla del esquema.
+    group by [atributo] Agrupar por columna.
+    order by [columna] asc Ordenar de forma ascendente.
+
+    show columns from [esquema].[tabla] Mostrar columnas del esquema.
+
+Ejemplo:
+    select column1, column2
+    from table_name1, table_name2
+
+    select last_name, count(first_name)
+    from sakila.actor group by last_name order by count(first_name) desc;
+
+Ejemplo:
+    select C.first_name, C.email, A.address
+    From sakila.customer as C, sakila.address as A
+    where C.address_id = A.address_id;
+
+    select * from sakila.customer;
+
+    select distinct first_name from sakila.actor order by first_name
+
+Conceptos
+    DISTINCT es una palabra reservada de SQL que permite “filtrar” los resultados de una o varias columnas por datos únicos .
+
+    AS: Permite crear un alias a las consultas.
+    p.e. sakila.customer as C
+
+    Por lo que al momento de escoger la columna ya no copiamos el nombre completo de la tabla sino solamente C:
+    customer.first_name -- > c.first_name
+
+    where: Se usa para poner un criterio de búsqueda.
+    
+    distinct: Permite seleccionar un sólo dato sin traer duplicados
+
+******************************
+    SELECT C.first_name, C.last_name, A.address, CY.city
+    FROM sakila.customer as C, sakila.address as A, sakila.city as CY
+    where C.address_id = A.address_id and A.city_id = CY.city_id and CY.city <> 'Warren' order by CY.city desc;
+
+******************************
+    
+    select * from sakila.film_text
+    where title not like '%rd';
+
+******************************
+    show columns from sakila.film_text;
+
+    alter table sakila.film_text add column fecha_lanza timestamp;
+
+    select * from sakila.film_text;
+
+    alter table sakila.film_text drop column fecha_lanza
+
+    update sakila.film_text set title='Proteco Movie' 
+    where film_id = 2;
+
+Cuidado!!!!!
+
+    update tabla1 set title = ‘nuevo título’; <— esto reemplazará el título de TODAS las filas de la tabla ‘tabla1’
+
+    delete from tabla1; <----esto borrará TODAS las filas de la tabla ‘tabla1’
+
+******************************
+Inserta Registros
+
+    insert into sakila.film_text values (1002, 'Proteco Serie', 'Aventura', '2018-11-29 23:17:40');
+
+    select * from sakila.film_text where film_id=1002;
+
+    delete from sakila.film_text where film_id=1002;
+
+******************************
+Joins
+
+left, rigth, inner
+
+    select customer.frist_name, customer.last_name, addres.address
+    from sakila.customer
+    right join sakila.address on customer.address_id=address.address_id;    
+
+    select customer.frist_name, customer.last_name, addres.address
+    from sakila.customer
+    left join sakila.address on customer.address_id=address.address_id;    
+
+    select customer.frist_name, customer.last_name, addres.address
+    from sakila.customer
+    inner join sakila.address on customer.address_id=address.address_id;    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

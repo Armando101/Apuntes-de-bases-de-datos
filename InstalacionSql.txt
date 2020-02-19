@@ -1,0 +1,19 @@
+sudo apt-get update
+
+sudo apt-get install mysql-workbench
+
+Ir a la pagina https://dev.mysql.com/doc/index-other.html
+y descargar el archivo comprimido sakila database
+
+descomprimen y lo guardan en el directorio q deseen.
+
+Con la consola misma entran al directorio y ponen pwd y copian la ruta de sakila-db y luego entramos a mysql, con sudo mysql(en caso de estar con usuario sin permisos de root) o con mysql -u root -p y desde la shell de mysql:
+
+mysql> source ruta_que_copiaron/sakila-schema.sql;
+mysql> source ruta_que_copiaron/sakila-data.sql;
+
+Para confirmar hacemos lo siguiente
+
+USE sakila;
+  SHOW TABLES;
+  exit
